@@ -21,17 +21,33 @@ public class Anio {
 
     //Agregarv materia con if
     public void agregarMateria(String nombre, float nota, int numeroMateria,int ciclo){
-        Materia mat = new Materia(nombre, nota);
+        Materia mat = new Materia(nombre, nota,ciclo);
         materias.add(mat);
     }
 
     public float calcularPromedioCiclo1(){
-        float prom = 0;
+        float suma=0,prom = 0;
+        int cant = 0;
+        for (Materia materia : materias) {
+			if (materia.getCiclo() == 1) {
+				suma = suma + materia.getNota();
+				cant++;
+			}
+		}
+        prom = suma/cant;
         return prom;
     }
 
     public float calcularPromedioCiclo2(){
-        float prom = 0;
+        float suma=0,prom = 0;
+        int cant = 0;
+        for (Materia materia : materias) {
+			if (materia.getCiclo() == 2) {
+				suma = suma + materia.getNota();
+				cant++;
+			}
+		}
+        prom = suma/cant;
         return prom;
     }
 
