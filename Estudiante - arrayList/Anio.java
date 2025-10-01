@@ -20,7 +20,7 @@ public class Anio {
     }
 
     //Agregarv materia con if
-    public void agregarMateria(String nombre, float nota, int numeroMateria,int ciclo){
+    public void agregarMateria(String nombre, float nota, int ciclo){
         Materia mat = new Materia(nombre, nota,ciclo);
         materias.add(mat);
     }
@@ -51,9 +51,11 @@ public class Anio {
         return prom;
     }
 
-    public float calcularPromedioAnio(){
-        float prom = 0;
-        return prom;
+    public float calcularPromedioAnio() throws Exception {
+        float sum = 0;
+        for (Materia mat : materias)
+        	sum = sum+mat.getNota();
+        return sum/materias.size();
     }
 
     public String toString(){
