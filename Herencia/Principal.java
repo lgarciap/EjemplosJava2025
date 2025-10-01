@@ -69,6 +69,19 @@ public class Principal {
             rpta = teclado.nextLine();  
         }
 
+        double nominaTotal = uvg.calcularNomina();
+        double nominaDocentes = uvg.salarioTotalDocentes();
+        double nominaNoDocentes = uvg.salarioTotalNoDocentes();
+
+        System.out.println("La nomina total de la universidad " + uvg.getNombre() + " es: ");
+        System.out.println(nominaTotal);
+        System.out.println("La nomina total de los docentes es: ");
+        System.out.println(nominaDocentes); 
+        System.out.println("La nomina total de los no docentes es: ");
+        System.out.println(nominaNoDocentes);
+        
+        System.out.println("Lista de docentes que tienen maestría");
+        System.out.println(uvg.docentesMaestria());
     }
-    
+
 }

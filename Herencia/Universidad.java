@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Universidad {
     private String nombre;
@@ -75,8 +76,62 @@ public class Universidad {
 
     }
 
-
+    /**
+     * Calcula la nomina total de la universidad
+     * @return double con la nomina total sin diferenciar tipo de trabajador
+     */
     public Double calcularNomina(){
-            
+        double total = 0;
+        for (Trabajador t: listaEmpleados)
+            total = total + t.calcularSalario();
+        return total;
+    }
+
+    /**
+     * Calcula la nomina total de la universidad, recorriendo la lista de empleados por posición
+     * @return double con la nomina total sin diferenciar tipo de trabajador
+     */
+    public double calcularNom(){
+        double total = 0.0;
+        for (int i = 0; i < listaEmpleados.size(); i++){
+            total += listaEmpleados.get(i).calcularSalario();
+        }
+        return total;
+    }
+
+    public double salarioTotalDocentes(){
+        double total = 0;
+        for (Trabajador t: listaEmpleados){
+            if (t instanceof Docente){
+                total = total + t.calcularSalario();
+            }
+        }
+        return total;
+    }
+    public double salarioTotalNoDocentes(){
+        double total = 0;
+        for (Trabajador t: listaEmpleados){
+            if (t instanceof NoDocente){
+                total = total + t.calcularSalario();
+            }
+        }
+        return total;
+    }
+
+    /**
+     * Devolver los nombres de todos los docentes que tienen Maestría
+     */
+    public String docentesMaestria(){
+        String nombres ="";
+        String gradoCient  = "";
+        for (Trabajador t: listaEmpleados){
+            if (t instanceof Docente){
+                gradoCient = ((Docente)t).getGradoCientifico();
+                if (gradoCient.equals("Master"))
+                    nombres = nombres + "- " + t.getNombre() + "\n";
+            }
+        }
+        return nombres;
+
     }
 }
